@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+        integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>TinDrive - Spark Up Your Car Affair!</title>
+</head>
+
+<body>
+    <div class="container-fluid text-center" id="container">
+        <div class="row justify-content-center mb-5 border-bottom border-dark" id="header">
+            <div class="col-2">
+                <img src="img/car.png" class="img-fluid" id="logo" alt="logo-img">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-8 text-center p-3">
+                <h1>Spark up your car-affair​!</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6 text-center p-3 border border-dark border-bottom-0 rounded-top" id="adjust-parameters">
+                <h2>Adjust your parameters</h3>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-3 text-center border border-dark border-top-0 parameters">
+                    <label for="customRange1" class="form-label" id="rangeLabel">Set your max price (in euros)</label>
+                    <input type="range" class="form-range form-control" id="customRange1" onchange="getRange()"
+                        min="1000" max="100000" step=1000>
+                    <input class="form-control mt-3" type="text" name="brandInput" id="brand-input">
+                    <button class="btn btn-danger m-3" id="search-button" onclick="getApi()">Save your criteria</button>
+                <button class="btn btn-danger m-3" id="start-search">Start Searching</button>
+            </div>
+            <div class="col-3 text-center border border-dark border-top-0 parameters">
+                <img src="img/bmwAngle.jpg" class="img-fluid" alt="bmw">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-2 text-center mt-5 mb-5">
+                <button type="button" id="startsearch" class="btn btn-dark btn-lg" onclick="window.location.href"='#'>
+                    Start searching
+                </button>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="row border border-dark" id="footer">
+            <div class="col-4 align-self-end mt-4 mb-4">
+                <p>Sigurd Boels</p>
+                <a href="https://github.com/sigurdgithub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sigurd-boels-187a12178/">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="col-4 align-self-end mt-4 mb-4">
+                <p>Wiktoria Kalisz</p>
+                <a href="https://github.com/calandile">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/wiktoria-kalisz/">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+            <div class="col-4 align-self-end mt-4 mb-4">
+                <p>Satiko Shapy</p>
+                <a href="https://github.com/satikoshapy">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/sati-shapy-085a8b185/">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script>
+        let num = 0;
+        label = document.getElementById("rangeLabel")
+
+        function getRange() {
+            label.innerHTML = document.getElementById("customRange1").value;
+            num = document.getElementById("customRange1").value;
+        }
+
+        const searchBtn = document.getElementById("search-button");
+
+        let chosenCars = [];
+
+        function getApi() {
+            fetch(`http://localhost:3000/cars`)
+                .then(response => response.json())
+                .then(data => {
+                    getCars(data)
+                    console.log(Object.values(data[0]))
+                })
+        }
+
+        const getCars = (data) => {
+
+            for (let el of data) {
+                if (el.brand === document.getElementById("brand-input").value) {
+                    chosenCars.push(el)
+                }
+
+            }
+            //console.log(chosenCars);
+            getSortedByPrice();
+        }
+        // console.log(document.getElementById("customRange1").value)
+
+        let sortedByPrice = []
+        const getSortedByPrice = () => {
+            for (let i of chosenCars) {
+                if (i.price <= num) {
+                    sortedByPrice.push(i)
+                }
+
+            }
+            console.log(sortedByPrice)
+        }
+        window.onload = function () {
+
+            const passSortedList = function (event) {
+                let start = document.querySelector("#start-search");
+                start.addEventListener("click", function () {
+                    localStorage.setItem("sorted-list", JSON.stringify(sortedByPrice))
+                    window.document.location = "./list.html"
+                })
+            };
+            passSortedList();
+        }
+    </script>
+</body>
+
+</html>
