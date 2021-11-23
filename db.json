@@ -1,0 +1,20 @@
+{
+  "cars": [
+    {"brand": "Tesla", "price": 100000, "carname": "Model S", "buildyear": "2021", "type": "Sedan ", "hp": "420", "img": "./img_cars/TModelS.jpg"},
+    { "brand": "Tesla", "price": 130000, "carname": "Model S Plaid", "buildyear": "2021", "type": "Sport", "hp": "1020", "img": "./img_cars/TModelSPlaid.jpg"},
+    { "brand": "Tesla", "price": 50000, "carname": "Model 3", "buildyear": "2021", "type": "Sedan", "hp": "300", "img": "./img_cars/TModel3.jpg" },
+    { "brand": "Tesla", "price": 57000, "carname": "Model 3 Long Range", "buildyear": "2021", "type": "Sedan", "hp": "250", "img": "./img_cars/TModel3longrange.jpg"},
+    { "brand": "Tesla", "price": 63000, "carname": "Model 3 Performance", "buildyear": "2021", "type": "Sedan", "hp": "350", "img": "./img_cars/TModel3performance.jpg"},
+    { "brand": "Tesla", "price": 114000, "carname": "Model X", "buildyear": "2021", "type": "SUV", "hp": "750", "img": "./img_cars/TModelx.jpg"},
+    { "brand": "Tesla", "price": 119000, "carname": "Model X Plaid", "buildyear": "2021", "type": "SUV", "hp": "1020", "img": "./img_cars/TModelxplaid.jpg"},
+    { "brand": "Tesla", "price": 63000, "carname": "Model Y Long Range", "buildyear": "2021", "type": "SUV", "hp": "250", "img": "./img_cars/TModelY.jpg"},
+    { "brand": "Tesla", "price": 70000, "carname": "Model Y Performance", "buildyear": "2021", "type": "SUV", "hp": "300", "img": "./img_cars/TModelY.jpg"},
+    { "brand": "Volkswagen", "price": 33700, "carname": "ID3", "buildyear": "2021", "type": "Compact", "hp": "200", "img": "./img_cars/VWID3.jpg"},
+    { "brand": "Volkswagen", "price": 49950, "carname": "ID4", "buildyear": "2020 ", "type": "SUV", "hp": "302", "img": "./img_cars/VWID4.jpg"},
+    { "brand": "Volkswagen", "price": 45000, "carname": "IDBuzz", "buildyear": "2022", "type": "Minivan", "hp": "268", "img": "./img_cars/VWIDbuzz.jpg"},
+    { "brand": "BMW", "price": 77300, "carname": "IX", "buildyear": "2021", "type": "SUV", "hp": "322", "img": "./img_cars/BMWix.jpg"},
+    { "brand": "BMW", "price": 70000, "carname": "IX3", "buildyear": "2020", "type": "SUV", "hp": "280", "img": "./img_cars/BMWix3.jpg"},
+    { "brand": "BMW", "price": 34950, "carname": "I3", "buildyear": "2019", "type": "Hatchback", "hp": "170", "img": "./img_cars/BMWi3.jpg"},
+    { "brand": "BMW", "price": 51905, "carname": "I4", "buildyear": "2021", "type": "Sedan", "hp": "335", "img": "./img_cars/BMWi4.jpg"}
+  ]
+}

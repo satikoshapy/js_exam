@@ -125,3 +125,7 @@ h1 {
     transform: scaleX(-1);
     -webkit-transform: scaleX(-1);
 }
+.form-label {
+     font-weight: 600;
+     font-size: large;
+}
