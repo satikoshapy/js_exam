@@ -2,4 +2,4 @@
 
 https://calandile.github.io/tinder-for-cars/
 
-1. Use an API
+A group project where we had to use an API.
